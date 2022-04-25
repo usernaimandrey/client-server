@@ -1,0 +1,25 @@
+version: "3"
+# Определяем список сервисов — services
+# Эти сервисы будут частью нашего приложения
+services:
+
+  server: # Имя сервиса
+    build:
+      # Контекст для сборки образа,
+      # в данном случае, текущая директория
+      context: server/
+      # Имя докерфайла из которого будет собран образ
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - "API_KEY=${API_KEY}"
+  
+  client: 
+    build:
+      
+      context: client/
+
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
